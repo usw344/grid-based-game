@@ -47,6 +47,7 @@ void draw() {
     displayEnemyBoard();
     showTheShips();
     checkIfisClickinShip();
+    shipsMovment();
 
   }
 
@@ -172,14 +173,77 @@ void checkIfisClickinShip() {
     }
   
   }
+  if ((mouseY > ship2Y - halfSize && mouseY < ship2Y- halfSize + squareHeight*2) && (mouseX > ship2X- halfSize && mouseX < ship2X - halfSize + squareWidth )) { 
+    if (mousePressed && (mouseButton == LEFT)) {
+      ship2Moving = true;
+    }
+  
+  }
+  if ((mouseY > ship3Y - halfSize && mouseY < ship3Y- halfSize + squareHeight*2) && (mouseX > ship3X- halfSize && mouseX < ship3X - halfSize + squareWidth )) { 
+    if (mousePressed && (mouseButton == LEFT)) {
+      ship3Moving = true;
+    }
+  
+  }
+  if ((mouseY > ship4Y - halfSize && mouseY < ship4Y- halfSize + squareHeight*2) && (mouseX > ship4X- halfSize && mouseX < ship4X - halfSize + squareWidth )) { 
+    if (mousePressed && (mouseButton == LEFT)) {
+      ship4Moving = true;
+    }
+  
+  }
 }
 
 
 void shipsMovment() {
-  
+  if (ship1Moving) {  
+    ship1X = mouseX;
+    ship1Y = mouseY;
+    ship2Moving = false;
+    ship3Moving = false;
+    ship4Moving = false;
 }
+  else if (ship2Moving) {
+    ship2X = mouseX;
+    ship2Y = mouseY;
+    ship1Moving = false;
+    ship3Moving = false;
+    ship4Moving = false;
+  }
+  else if (ship3Moving) {
+    ship3X = mouseX;
+    ship3Y = mouseY;
+    ship1Moving = false;
+    ship2Moving = false;
+    ship4Moving = false;
+  }
+  else if (ship4Moving) {
+    ship4X = mouseX;
+    ship4Y = mouseY;
+    ship1Moving = false;
+    ship2Moving = false;
+    ship3Moving = false;
+  }
+  }
 
 
+void mousePressed() {
+   float halfSize = squareHeight/2;
+  if  ((mouseY > ship1Y - halfSize && mouseY < ship1Y- halfSize + squareHeight*2) && (mouseX > ship1X- halfSize && mouseX < ship1X - halfSize + squareWidth ) &&(mouseButton == RIGHT)) {
+    isHorizontal = !isHorizontal;
+  }
+  else if  ((mouseY > ship2Y - halfSize && mouseY < ship2Y- halfSize + squareHeight*2) && (mouseX > ship2X- halfSize && mouseX < ship2X - halfSize + squareWidth ) &&(mouseButton == RIGHT)) {
+    isHorizontal = !isHorizontal;
+  }
+  else if  ((mouseY > ship3Y - halfSize && mouseY < ship3Y- halfSize + squareHeight*2) && (mouseX > ship3X- halfSize && mouseX < ship3X - halfSize + squareWidth ) &&(mouseButton == RIGHT)) {
+    isHorizontal = !isHorizontal;
+  }
+  else if  ((mouseY > ship4Y - halfSize && mouseY < ship4Y- halfSize + squareHeight*2) && (mouseX > ship4X- halfSize && mouseX < ship4X - halfSize + squareWidth ) &&(mouseButton == RIGHT)) {
+    isHorizontal = !isHorizontal;
+  }
+}
 void mouseReleased() {
-  shipMoving = false;
+  ship1Moving =  false;
+  ship2Moving = false;
+  ship3Moving = false;
+  ship4Moving = false;
 }
